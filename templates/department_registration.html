@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Department Management</h1>
+
+    {% if data['up']%}
+      
+    <form action="" method="post">
+       
+        <table>
+            <tr>
+            
+                <th>department_name:</th>
+                <td><input type="text" value="{{data['up'][0]['department_name']}}" name="dname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Update" name="update"></td>
+            </tr>
+            </table>
+        </form>
+            
+          {%else%}
+    
+    <form action="" method="post">
+       
+        <table>
+            <tr>
+            
+                <th>department_name:</th>
+                <td><input type="text" name="dname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit"></td>
+            </tr>
+            </table>
+        </form>
+            
+            
+
+            <H2>Department </H2>
+            <table border="1">
+                <tr>
+                    <th>sl no</th>
+                    <th>department_name</th>
+                    <th>Action</th>
+                    
+                    
+                    
+                </tr>
+        
+                {% for i in data['view']%}
+                <tr>
+                    <td>{{loop.index }}</td>
+                    <td>{{i['department_name'] }}</td>
+                    <td><a href="?action=delete&id={{i['department_id']}}">delete</a>
+                        <a href="?action=update&id={{i['department_id']}}">update</a></td>
+                    
+                    
+                   
+        
+                   
+        
+                </tr>
+                {%endfor%}
+            </table> 
+        {%endif%}
+        </body>
+        </html>

@@ -1,0 +1,44 @@
+<html> 
+    <H2>View Complaints and Send reply</H2>
+    <table border="1">
+        <tr>
+            
+            <th>complaint_id</th>
+            <th>sender_id</th>
+            <th>title</th>
+            <th>description</th>
+            <th>reply</th>
+            <th>date</th>
+            
+            
+        </tr>
+
+        {% for i in data['view']%}
+        <tr>
+            
+            <td>{{i['complaint_id'] }}</td>
+            <td>{{i['sender_id'] }}</td>
+            <td>{{i['title'] }}</td>
+            <td>{{i['description'] }}</td>
+            {%if i['reply'] == 'pending'%}
+            <td><form action="" method="post">
+                <table>
+                    <tr>
+                        <td><textarea name="reply" id="" cols="30" rows="10"></textarea>
+                        <input type="text" name="c_id" value="{{i['complaint_id']}}" hidden  id=""></td>
+                        <td><input type="submit" name="submit" id=""></td>
+                    </tr>
+                </table>
+            </form></td>
+            {%else%}
+            <td>{{i['reply']}}</td>
+            {%endif%}
+            <td>{{i['date'] }}</td>
+            
+    
+
+        </tr>
+        {%endfor%}
+    </table> 
+
+</html>

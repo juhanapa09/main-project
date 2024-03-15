@@ -1,0 +1,29 @@
+<html> 
+    <H2> Notifications </H2>
+    <table border="1">
+        <tr>
+            <th>sl no</th>
+            <th>title</th>
+            <th>description</th>
+           
+    
+        </tr>
+        
+        {% for i in data['view']%}
+        <tr>
+            <td>{{loop.index }}</td>
+            <td>{{i['title'] }}</td>
+            <td>{{i['description'] }}</td>
+
+        </tr>
+    </tr>
+    {%endfor%}
+</table> 
+
+
+
+</html>
+
+
+   
+

@@ -1,0 +1,27 @@
+<html> 
+    <H2> View Department </H2>
+    <table border="1">
+        <tr>
+            <th>sl no</th>
+            <th>department_name</th>
+           
+    
+        </tr>
+        
+        {% for i in data['view']%}
+        <tr>
+            <td>{{loop.index }}</td>
+            <td>{{i['department_name'] }}</td>
+        </tr>
+    </tr>
+    {%endfor%}
+</table> 
+
+
+
+
+</html>
+
+
+   
+

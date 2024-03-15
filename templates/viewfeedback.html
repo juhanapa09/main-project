@@ -1,0 +1,24 @@
+<html> 
+    <H2>View feedback</H2>
+    <table border="1">
+        <tr>
+            
+            <th>feedback</th>
+            <th>date</th>
+            
+            
+        </tr>
+
+        {% for i in data['view']%}
+        <tr>
+            
+            <td>{{i['feedback'] }}</td>
+            <td>{{i['date'] }}</td>
+            
+    
+
+        </tr>
+        {%endfor%}
+    </table> 
+
+</html>

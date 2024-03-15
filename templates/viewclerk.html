@@ -1,0 +1,34 @@
+<html> 
+    <H2>Clerk </H2>
+    <table border="1">
+        <tr>
+            
+            <th>fname</th>
+            <th>lname</th>
+            <th>place</th>
+            <th>phone</th>
+            <th>email</th>
+            
+            
+            
+        </tr>
+
+        {% for i in data['view']%}
+        <tr>
+            
+            <td>{{i['fname'] }}</td>
+            <td>{{i['lname'] }}</td>
+            <td>{{i['place'] }}</td>
+            <td>{{i['phone'] }}</td>
+            <td>{{i['email'] }}</td>
+            
+            
+           
+
+           
+
+        </tr>
+        {%endfor%}
+    </table> 
+
+</html>
