@@ -1,4 +1,4 @@
-<html> 
+<!-- <html> 
     <H2>View Complaints and Send reply</H2>
     <table border="1">
         <tr>
@@ -42,3 +42,64 @@
     </table> 
 
 </html>
+ -->
+
+{% extends 'admin_home.html' %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <h3>View Complaints and Send Reply</h3>
+    <div class="row g-4">
+        <div class="col-sm-8">
+            
+           
+           
+           
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sl.No</th>
+                                <th scope="col">title</th>
+
+                                <th scope="col">description</th>
+                                <th scope="col">reply</th>
+                                <th scope="col">date</th>
+                               
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for i in data['view']%}
+                            <tr>
+                               
+                                <td>{{loop.index }}</td>
+                                <td>{{i['title'] }}</td>
+                                <td>{{i['description'] }}</td>
+                                {%if i['reply'] == 'pending'%}
+                                <td><form action="" method="post">
+                                    <table>
+                                        <tr>
+                                            <td><textarea name="reply" id="" cols="30" rows="10"></textarea>
+                                            <input type="text" name="c_id" value="{{i['complaint_id']}}" hidden  id=""></td>
+                                            <td><input type="submit" name="submit" id=""></td>
+                                        </tr>
+                                    </table>
+                                </form></td>
+                                {%else%}
+                                <td>{{i['reply']}}</td>
+                                {%endif%}
+                                
+                                <td>{{i['date'] }}</td>
+                                
+                                
+                            </tr>
+                           {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+       </div></div></div>
+        {%endblock%}
+    
+
+       

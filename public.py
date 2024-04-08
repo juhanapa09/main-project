@@ -11,11 +11,14 @@ def home():
 
 @public.route("/login",methods=['get','post'])
 def login():
+    
     if 'log' in request.form:
+        
         uname=request.form['username']
         passw=request.form['password']
         qry="select * from login where username='%s' and password='%s'"%(uname,passw)
         res=select(qry)
+       
         session['log']=res[0]['login_id']
         if res[0]['usertype']=='admin':
             return redirect(url_for('admin.adminhome'))

@@ -1,122 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
 
-    <h1>Clerk Management </h1>
-    
-    <form action="" method="post">
-
-        {% if data['up']%}
-
-    
-
-        <table>
-            <tr>
-            
-                <th>fname:</th>
-                <td><input type="text" value="{{data['up'][0]['fname']}}" name="fname"></td>
-            </tr>
-            <th>lname:</th>
-                <td><input type="text" value="{{data['up'][0]['lname']}}" name="lname"></td>
-            </tr>
-            <th>place:</th>
-                <td><input type="text" value="{{data['up'][0]['place']}}" name="place"></td>
-            </tr>
-            <th>phone:</th>
-                <td><input type="text" value="{{data['up'][0]['phone']}}" name="phone"></td>
-            </tr>
-            <th>email:</th>
-                <td><input type="text" value="{{data['up'][0]['email']}}" name="email"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="submit" value="Update" name="update"></td>
-            </tr>
-            </table>
-        </form>
-            
-          {%else%}
-
-    <form action="" method="post">
-
-       
-        <table>
-            
-            
-                <!-- <th>login_id:</th>
-                <td><input type="text" name="loginid"></td>
-            </tr>
-            <tr>
-                <th>department_id:</th>
-                <td><input type="text" name="deptid"></td>
-            </tr> -->
-            <tr>
-                <th>fname:</th>
-                <td><input type="text" name="fname"></td>
-            </tr>
-            <tr>
-            
-                <th>lname:</th>
-                <td><input type="text" name="lname"></td>
-            </tr>
-            <tr>
-                <th>place:</th>
-                <td><input type="text" name="place"></td>
-            </tr>
-            <tr>
-                <th>phone:</th>
-                <td><input type="text" name="phone"></td>
-            </tr>
-            <tr>
-                <th>email:</th>
-                <td><input type="text" name="email"></td>
-            </tr>
-            <tr>
-                <td colspan="2" align="center"><input type="submit" name="submit"></td>
-            </tr>
-            </table>
+        {% extends 'admin_home.html' %}
+        {% block content %}
+        <div class="container-fluid pt-4 px-4">
+            <h3>Clerk Management</h3>
+            <div class="row g-4">
+                <div class="col-sm-12 col-xl-6">
+                    
+                    <div class="bg-light rounded h-100 p-4">
+                        <h6 class="mb-4">Register</h6>
+                       
+                        {% if data['up']%}
+            <form action="" method="post">
+                            <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">fname</label>
+                                <input  type="text" value="{{data['up'][0]['fname']}}" name="fname" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                                    </div>
+                                    <div class="mb-3">
+                                        
+                                <label for="exampleInputEmail1" class="form-label">lname</label>
+                                <input  type="text" value="{{data['up'][0]['lname']}}" name="lname" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp"></div>
+                                    <div class="mb-3">
+        
+                                <label for="exampleInputEmail1" class="form-label">place</label>
+                                <input  type="text" value="{{data['up'][0]['place']}}" name="place" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp"></div>
+                                    <div class="mb-3">
+                                <label for="exampleInputEmail1" class="form-label">phone</label>
+                                <input  type="text" value="{{data['up'][0]['phone']}}" name="phone" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp"></div>
+                                    <div class="mb-3">
+                                    <label for="exampleInputEmail1" class="form-label">email</label>
+                                <input  type="text" value="{{data['up'][0]['email']}}" name="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp">
+                                <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else. -->
+                                </div>
+                            
+                                <div class="mb-3">
+                            <button type="submit" value="Update" name="update" class="btn btn-primary">Update</button>
+                        </form>
+                       
+                   
+                    
+                    {%else%}
+              
+              <form action="" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">fname</label>
+                    <input  type="text"  name="fname" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp"></div>
+                        <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">lname</label>
+                    <input  type="text"  name="last" class="form-control" id="exampleInputEmail1"
+                            aria-describedby="emailHelp"></div>
+                            <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">place</label>
+                    <input  type="text"  name="place" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp"></div>
+                        <div class="mb-3">
+        
+                    <label for="exampleInputEmail1" class="form-label">phone</label>
+                    <input  type="text"  name="phone" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp"></div>
+                        <div class="mb-3">
+        
+                    <label for="exampleInputEmail1" class="form-label">email</label>
+                    <input  type="text"  name="email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp"></div>
+                        <div class="mb-3">
+                   
+                
+                <button type="submit" value="submit" name="submit" class="btn btn-primary">Submit</button>
             </form>
-
-            <H2>Clerk Management </H2>
-            <table border="1">
-                <tr>
-                    <th>sl no</th>
-                    <th>fname</th>
-                    <th>lname</th>
-                    <th>place</th>
-                    <th>phone</th>
-                    <th>email</th>
-                    
-
-                    
-                    
-                    
-                </tr>
-        
-                {% for i in data['view']%}
-                <tr>
-                    <td>{{loop.index }}</td>
-                    <td>{{i['fname'] }}</td>
-                    <td>{{i['lname'] }}</td>
-                    <td>{{i['place'] }}</td>
-                    <td>{{i['phone'] }}</td>
-                    <td>{{i['email'] }}</td>
-                    <td><a href="?action=delete&id={{i['clerk_id']}}">delete</a>
-                        <a href="?action=update&id={{i['clerk_id']}}">update</a></td>
-                    
-                    
+            {%endif%}
+                    </div></div></div>
                    
+                    <div class="col-12">
+                        <div class="bg-light rounded h-100 p-4">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">slno</th>
+                                        <th scope="col">fname</th>
+                                        <th scope="col">lname</th>
         
-                   
+                                        <th scope="col">place</th>
+                                        <th scope="col">phone</th>
+                                        <th scope="col">email</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for i in data['view']%}
+                                    <tr>
+                                       
+                                        <td>{{loop.index }}</td>
+                                        <td>{{i['fname'] }}</td>
+                                        <td>{{i['lname'] }}</td>
+                                        <td>{{i['phone'] }}</td>
+                                        <td>{{i['place'] }}</td>
+                                        <td>{{i['email'] }}</td>
+                                        <td><a href="?action=delete&id={{i['clerk_id']}}">delete</a>
+                                            <a href="?action=update&id={{i['clerk_id']}}">update</a></td>
+                                    
+                                    </tr>
+                                   {%endfor%}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+               </div></div></div>
+                {%endblock%}
+            
         
-                </tr>
-                {%endfor%}
-            </table> 
-        {%endif%}
-        </body>
-        </html>
+               
         

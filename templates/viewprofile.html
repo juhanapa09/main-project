@@ -1,32 +1,58 @@
-<html> 
-    <H2>Village officer</H2>
-    <table border="1">
-        <tr>
-            
-            <th>Fname</th>
-            <th>lname</th>
-            <th>place</th>
-            <th>phone</th>
-            <th>email</th>
-            
-            
-        </tr>
 
+
+
+{% extends 'village_officer.html' %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <h3>Village Officers </h3>
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-10">
+
+            <div class="col-12">
+                <div class="bg-light rounded h-100 p-4">
+                    <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">fname</th>
+                        <th scope="col">lname</th>
+                        <th scope="col">place</th>
+                        <th scope="col">phone</th>
+                        <th scope="col">email</th>
+
+
+
+                        
+                    </tr>
+                </thead>
+                <tbody>
+   
+       
+        
         {% for i in data['view']%}
         <tr>
-           
-            <td>{{i['fname'] }}</td>
-            <td>{{i['lname'] }}</td>
-            <td>{{i['place'] }}</td>
-            <td>{{i['phone'] }}</td>
-            <td>{{i['email'] }}</td>
+            <td>{{i['fname']}}</td>
+            <td>{{i['lname']}}</td>
+            <td>{{i['place']}}</td>
+            <td>{{i['phone']}}</td>
+            <td>{{i['email']}}</td>
+
+
             
-           
-
-           
-
         </tr>
-        {%endfor%}
-    </table> 
+    </tr>
+    {%endfor%}
+ </tbody>
+</table>
+</div>
+</div>
+</div></div></div>
+{%endblock%}
 
-</html>
+
+
+
+
+
+
+   
+

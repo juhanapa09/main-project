@@ -1,12 +1,22 @@
-<html> 
-    <H2> View Department </H2>
-    <table border="1">
-        <tr>
-            <th>sl no</th>
-            <th>department_name</th>
-           
-    
-        </tr>
+{% extends 'village_officer.html' %}
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <h3>View Department </h3>
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+
+        <div class="bg-light rounded h-100 p-4">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sl No</th>
+                        <th scope="col">Department Name</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+   
+       
         
         {% for i in data['view']%}
         <tr>
@@ -16,11 +26,15 @@
     </tr>
     {%endfor%}
 </table> 
-
-
-
-
+</div>
+</div>
 </html>
+{%endblock%}
+
+
+
+
+
 
 
    

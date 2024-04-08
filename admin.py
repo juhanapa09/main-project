@@ -53,9 +53,11 @@ def notification():
 @admin.route("/department_registration",methods=['get','post'])
 def dept_registration():
     data={}
+    
     qry6="select * from department"
     res=select(qry6)
     data['view']=res
+  
     if 'action' in request.args:
           action=request.args['action']
           id=request.args['id']
@@ -129,7 +131,7 @@ def villageoffice_registration():
     
     if 'submit' in request.form:
         fname=request.form['fname']
-        lname=request.form['lname']
+        lname=request.form['last']
         place=request.form['place']
         phone=request.form['phone']
         email=request.form['email']
@@ -187,7 +189,7 @@ def clerk_registration():
     
     if 'submit' in request.form:
         fname=request.form['fname']
-        lname=request.form['lname']
+        lname=request.form['last']
         place=request.form['place']
         phone=request.form['phone']
         email=request.form['email']
