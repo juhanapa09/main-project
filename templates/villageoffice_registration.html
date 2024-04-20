@@ -1,4 +1,8 @@
-<!-- <!DOCTYPE html>
+{%include 'admin_header.html'%}
+
+
+<!-- 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -66,7 +70,15 @@
             </tr>
             <tr>
                 <th>email:</th>
-                <td><input type="text" name="email"></td>
+                <td><input type="email" name="email"></td>
+            </tr>
+            <tr>
+                <th>User Name</th>
+                <td><input type="text" name="uname" ></td>
+            </tr>
+            <tr>
+                <th>Password</th>
+                <td><input type="password" name="pssw"></td>
             </tr>
             <tr>
                 <td colspan="2" align="center"><input type="submit" name="submit"></td>
@@ -83,9 +95,6 @@
                     <th>place</th>
                     <th>phone</th>
                     <th>email</th>
-
-                    
-                    
                     
                 </tr>
         
@@ -102,7 +111,6 @@
                     
                     
                    
-        
                    
         
                 </tr>
@@ -113,118 +121,205 @@
         </html>
         </html> -->
 
-        
-{% extends 'admin_home.html' %}
-{% block content %}
-<div class="container-fluid pt-4 px-4">
-    <h3>Village Officer Management</h3>
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            
-            <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Register</h6>
-               
-                {% if data['up']%}
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Officer Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 50%;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="submit"] {
+            width: calc(100% - 6px);
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+
+        .container h2 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Village Officer Management</h1>
+
+{% if data['up'] %}
+
+<form action="" method="post">
+    <table>
+        <tr>
+            <th>First Name:</th>
+            <td><input type="text" value="{{ data['up'][0]['fname'] }}" name="fname"></td>
+        </tr>
+        <tr>
+            <th>Last Name:</th>
+            <td><input type="text" value="{{ data['up'][0]['lname'] }}" name="lname"></td>
+        </tr>
+        <tr>
+            <th>Place:</th>
+            <td><input type="text" value="{{ data['up'][0]['place'] }}" name="place"></td>
+        </tr>
+        <tr>
+            <th>Phone:</th>
+            <td><input type="text" value="{{ data['up'][0]['phone'] }}" name="phone"></td>
+        </tr>
+        <tr>
+            <th>Email:</th>
+            <td><input type="email" value="{{ data['up'][0]['email'] }}" name="email"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="update"></td>
+        </tr>
+    </table>
+</form>
+
+{% else %}
+
+<div class="container">
     <form action="" method="post">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">fname</label>
-                        <input  type="text" value="{{data['up'][0]['fname']}}" name="fname" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp"></div>
-                            <div class="mb-3">
-                            </div>
-                            <div class="mb-3">
-                                
-                        <label for="exampleInputEmail1" class="form-label">lname</label>
-                        <input  type="text" value="{{data['up'][0]['lname']}}" name="lname" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp"></div>
-                            <div class="mb-3">
-
-                        <label for="exampleInputEmail1" class="form-label">place</label>
-                        <input  type="text" value="{{data['up'][0]['place']}}" name="place" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp"></div>
-                            <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">phone</label>
-                        <input  type="text" value="{{data['up'][0]['phone']}}" name="phone" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp"></div>
-                            <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">email</label>
-                        <input  type="text" value="{{data['up'][0]['email']}}" name="email" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp"></div>
-                            <div class="mb-3">
-                
-                        <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else. -->
-                        </div>
-                    
-                    
-                    <button type="submit" value="Update" name="update" class="btn btn-primary">Update</button>
-                </form>
-           
-            
-            {%else%}
-      
-      <form action="" method="post">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">fname</label>
-            <input  type="text"  name="fname" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
-            <label for="exampleInputEmail1" class="form-label">lname</label>
-            <input  type="text"  name="last" class="form-control" id="exampleInputEmail1"
-                    aria-describedby="emailHelp">
-            <label for="exampleInputEmail1" class="form-label">place</label>
-            <input  type="text"  name="place" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
-
-            <label for="exampleInputEmail1" class="form-label">phone</label>
-            <input  type="text"  name="phone" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
-
-            <label for="exampleInputEmail1" class="form-label">email</label>
-            <input  type="text"  name="email" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
-            </div>
-        
-        
-        <button type="submit" value="submit" name="submit" class="btn btn-primary">Submit</button>
+        <table>
+            <tr>
+                <th>First Name:</th>
+                <td><input type="text" name="fname" pattern="[a-zA-z ]+" title="enter alphabets only" required></td>
+            </tr>
+            <tr>
+                <th>Last Name:</th>
+                <td><input type="text" name="lname" required></td>
+            </tr>
+            <tr>
+                <th>Place:</th>
+                <td><input type="text" name="place" required></td>
+            </tr>
+            <tr>
+                <th>Phone:</th>
+                <td><input type="text" pattern="[0-9]{10}" title="Enter 10 Digit Number Only" name="phone" required></td>
+            </tr>
+            <tr>
+                <th>Email:</th>
+                <td><input type="email" name="email" required></td>
+            </tr>
+            <tr>
+                <th>User Name:</th>
+                <td><input type="text" name="uname" required></td>
+            </tr>
+            <tr>
+                <th>Password:</th>
+                <td><input type="password" name="pssw" required></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit"></td>
+            </tr>
+        </table>
     </form>
-    {%endif%}
-            </div></div></div>
-           
-            <div class="col-12">
-                <div class="bg-light rounded h-100 p-4">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">fname</th>
-                                <th scope="col">lname</th>
+</div>
+<center>
+<H2>Village Office</H2>
+</center>
+<table border="1" class="container">
+    <tr>
+        <th>SL No</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Place</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Action</th>
+    </tr>
 
-                                <th scope="col">place</th>
-                                <th scope="col">phone</th>
-                                <th scope="col">email</th>
-                                <th scope="col">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for i in data['view']%}
-                            <tr>
-                               
-                                <td>{{loop.index }}</td>
-                                <td>{{i['fname'] }}</td>
-                                <td>{{i['lname'] }}</td>
-                                <td>{{i['phone'] }}</td>
-                                <td>{{i['place'] }}</td>
-                                <td>{{i['email'] }}</td>
-                                <td><a href="?action=delete&id={{i['village_office_id']}}">delete</a>
-                                    <a href="?action=update&id={{i['village_office_id']}}">update</a></td>
-                            
-                            </tr>
-                           {%endfor%}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-       </div></div></div>
-        {%endblock%}
-    
+    {% for i in data['view'] %}
+    <tr>
+        <td>{{ loop.index }}</td>
+        <td>{{ i['fname'] }}</td>
+        <td>{{ i['lname'] }}</td>
+        <td>{{ i['place'] }}</td>
+        <td>{{ i['phone'] }}</td>
+        <td>{{ i['email'] }}</td>
+        <td>
+            <a href="?action=delete&id={{ i['village_office_id'] }}" class="btn btn-danger">Delete</a>
+            <a href="?action=update&id={{ i['village_office_id'] }}" class="btn btn-info ">Update</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+</body>
+</html>
 
-    
+        {%include 'footer.html'%}

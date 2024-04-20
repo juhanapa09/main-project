@@ -1,3 +1,7 @@
+{%include 'admin_header.html'%}
+
+
+<!-- 
 <html> 
     <H2>View feedback</H2>
     <table border="1">
@@ -21,6 +25,79 @@
         {%endfor%}
     </table> 
 
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Feedback</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>View Feedback</h2>
+    <table border="1">
+        <tr>
+            <th>Feedback</th>
+            <th>Date</th>
+        </tr>
+
+        {% for i in data['view']%}
+        <tr>
+            <td>{{i['feedback']}}</td>
+            <td>{{i['date']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
 </html>
 
 
+{%include 'footer.html'%}

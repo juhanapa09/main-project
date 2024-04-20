@@ -44,20 +44,16 @@ def notification():
         description=request.form['description']
         qry="insert into notification values(null,'%s','%s',curdate())"%(title,description)
         insert(qry)
-    
-    
-        
+
     return render_template("notification.html")
 
 
 @admin.route("/department_registration",methods=['get','post'])
 def dept_registration():
     data={}
-    
     qry6="select * from department"
     res=select(qry6)
     data['view']=res
-  
     if 'action' in request.args:
           action=request.args['action']
           id=request.args['id']
@@ -103,7 +99,8 @@ def villageoffice_registration():
     if action=='delete':
         qry8="delete from village_officer where village_office_id='%s'"%(id)
         delete(qry8)
-        return redirect(url_for('admin.villageoffice_registration'))
+        return '''<script>alert("Delete Successfully");window.location='/villageoffice_registration'</script>'''
+
     
     if action=='update':
         qry9="select * from village_officer where village_office_id='%s'"%(id)
@@ -127,24 +124,26 @@ def villageoffice_registration():
         qry14="update village_officer set email='%s' where village_office_id ='%s'"%(email,id)
         update(qry14)
 
-        return redirect(url_for('admin.villageoffice_registration'))
+        return '''<script>alert("Update Successfully");window.location='/villageoffice_registration'</script>'''
+
     
     if 'submit' in request.form:
         fname=request.form['fname']
-        lname=request.form['last']
+        lname=request.form['lname']
         place=request.form['place']
         phone=request.form['phone']
         email=request.form['email']
+        username=request.form['uname']
+        password=request.form['pssw']
 
-
-
-
-
-        qry="insert into village_officer values(null,null,'%s','%s','%s','%s','%s')"%(fname,lname,place,phone,email)
+        qwt="insert into login values (null,'%s','%s','village_officer')"%(username,password)
+        log=insert(qwt)
+        qry="insert into village_officer values(null,'%s','%s','%s','%s','%s','%s')"%(log,fname,lname,place,phone,email)
         insert(qry)
-        return redirect(url_for('admin.villageoffice_registration'))
+        return '''<script>alert("Registration Successfully");window.location='/villageoffice_registration'</script>'''
+
         
-    
+
     return render_template("villageoffice_registration.html",data=data)
 
 @admin.route("/clerk_registration",methods=['get','post'])
@@ -153,6 +152,10 @@ def clerk_registration():
     qry7="select * from clerk"
     res=select(qry7)
     data['view']=res
+    dep="select * from department"
+    rr=select(dep)
+    data['dep']=rr
+
     if 'action' in request.args:
           action=request.args['action']
           id=request.args['id']
@@ -188,19 +191,70 @@ def clerk_registration():
         return redirect(url_for('admin.clerk_registration'))
     
     if 'submit' in request.form:
+        dep=request.form['dep']
         fname=request.form['fname']
-        lname=request.form['last']
+        lname=request.form['lname']
         place=request.form['place']
         phone=request.form['phone']
         email=request.form['email']
+        username=request.form['uname']
+        password=request.form['pwd']
 
 
-
-
-
-        qry="insert into clerk values(null,null,null,'%s','%s','%s','%s','%s')"%(fname,lname,place,phone,email)
+        lt="insert into login values(null,'%s','%s','clerk')"%(username,password)
+        res=insert(lt)
+        qry="insert into clerk values(null,'%s','%s','%s','%s','%s','%s','%s')"%(res,dep,fname,lname,place,phone,email)
         insert(qry)
+
         return redirect(url_for('admin.clerk_registration'))
         
-    
     return render_template("clerk_registration.html",data=data)
+
+
+@admin.route("/admin_mange_category",methods=['get','post'])
+def manage_category():
+    data={}
+    qw="select * from application_category"
+    res=select(qw)
+    data['view']=res
+
+    if 'action' in request.args:
+        id=request.args['id']
+        action=request.args['action']
+
+    else :
+        action=None
+    
+    if  action=='delete':
+        dele="delete from application_category where application_category_id='%s'"%(id)
+        delete(dele)
+        return ("<script>alert('Delete successfully');window.location='/admin_mange_category'</script>")
+
+
+    if action=='update':
+        data={}
+        upt="select * from application_category where application_category_id='%s'"%(id)
+        ress=select(upt)
+        data['up']=ress
+    
+    if 'update' in request.form:
+        catname=request.form['cat']
+
+        upp="update application_category set title='%s' where application_category_id='%s'"%(catname,id)
+        update(upp)
+
+        return ("<script>alert('Update successfully');window.location='/admin_mange_category'</script>")
+
+
+    if 'add' in request.form:
+        catname=request.form['cat']
+
+        qry="insert into application_category values(null,'%s')"%(catname)
+        insert(qry)
+
+        return ("<script>alert('Add successfully');window.location='/admin_mange_category'</script>")
+    
+    return render_template("admin_manage_category.html",data=data)
+
+
+

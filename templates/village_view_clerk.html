@@ -1,0 +1,112 @@
+
+{%include 'village_header.html'%}
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            
+            <th>First name</th>
+            <th>Last name</th>
+            <th>place</th>
+            <th>phone</th>
+            <th>email</th>
+            
+            
+            
+        </tr>
+
+        {% for i in data['view']%}
+        <tr>
+            
+            <td>{{i['fname'] }}</td>
+            <td>{{i['lname'] }}</td>
+            <td>{{i['place'] }}</td>
+            <td>{{i['phone'] }}</td>
+            <td>{{i['email'] }}</td>
+            
+            
+        </tr>
+        {%endfor%}
+    </table> 
+</body>
+</html>
+ -->
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+            color: #333;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <table border="1">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Place</th>
+            <th>Phone</th>
+            <th>Email</th>
+        </tr>
+
+        {% for person in data['view'] %}
+        <tr>
+            <td>{{ person['fname'] }}</td>
+            <td>{{ person['lname'] }}</td>
+            <td>{{ person['place'] }}</td>
+            <td>{{ person['phone'] }}</td>
+            <td>{{ person['email'] }}</td>
+        </tr>
+        {% endfor %}
+    </table> 
+</body>
+</html>
+
+
+ 
+{%include 'footer.html'%}

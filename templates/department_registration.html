@@ -1,69 +1,208 @@
+{%include 'admin_header.html'%}
 
-{% extends 'admin_home.html' %}
-{% block content %}
-<div class="container-fluid pt-4 px-4">
-    <h3>Department Management</h3>
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-6">
-            
-            <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Register</h6>
-               
-                {% if data['up']%}
-    <form action="" method="post">
-                    <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Department Name</label>
-                        <input  type="text" value="{{data['up'][0]['department_name']}}" name="dname" class="form-control" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
-                        </div>
-                    
-                    
-                    <button type="submit" value="Update" name="update" class="btn btn-primary">Update</button>
-                </form>
-           
-            
-            {%else%}
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <h1>Department Management</h1>
+
+    {% if data['up']%}
       
-      <form action="" method="post">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Department Name</label>
-            <input  type="text"  name="dname" class="form-control" id="exampleInputEmail1"
-                aria-describedby="emailHelp">
-            </div>
-        
-        
-        <button type="submit" value="submit" name="submit" class="btn btn-primary">Submit</button>
-    </form>
-    {%endif%}
-            </div></div></div>
-           
-            <div class="col-sm-12 col-xl-6">
-                <div class="bg-light rounded h-100 p-4">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Department Name</th>
-                                <th scope="col"> Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for i in data['view']%}
-                            <tr>
-                               
-                                <td>{{loop.index }}</td>
-                                <td>{{i['department_name'] }}</td>
-                                <td><a href="?action=delete&id={{i['department_id']}}">delete</a>
-                                    <a href="?action=update&id={{i['department_id']}}">update</a></td>
-                            
-                            </tr>
-                           {%endfor%}
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-       </div></div></div>
-        {%endblock%}
+    <form action="" method="post">
+       
+        <table>
+            <tr>
+            
+                <th>department_name:</th>
+                <td><input type="text" value="{{data['up'][0]['department_name']}}" name="dname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" value="Update" name="update"></td>
+            </tr>
+            </table>
+        </form>
+            
+          {%else%}
     
+    <form action="" method="post">
+       
+        <table>
+            <tr>
+            
+                <th>department_name:</th>
+                <td><input type="text" name="dname"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="submit"></td>
+            </tr>
+            </table>
+        </form>
+            
+            
 
+            <H2>Department </H2>
+            <table border="1">
+                <tr>
+                    <th>sl no</th>
+                    <th>department_name</th>
+                    <th>Action</th>
+                    
+                    
+                    
+                </tr>
+        
+                {% for i in data['view']%}
+                <tr>
+                    <td>{{loop.index }}</td>
+                    <td>{{i['department_name'] }}</td>
+                    <td><a href="?action=delete&id={{i['department_id']}}">delete</a>
+                        <a href="?action=update&id={{i['department_id']}}">update</a></td>
+                    
+                    
+                   
+        
+                   
+        
+                </tr>
+                {%endfor%}
+            </table> 
+        {%endif%}
+        </body>
+        </html> -->
+
+
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Department Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        form {
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: blue;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Department Management</h1>
+
+{% if data['up']%}
+  
+<form action="" method="post">
+   
+    <table>
+        <tr>
+            <th>department_name:</th>
+            <td><input type="text" value="{{data['up'][0]['department_name']}}" name="dname"></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" value="Update" name="update"></td>
+        </tr>
+    </table>
+</form>
+
+{% else %}
+
+<form action="" method="post">
+   
+    <table>
+        <tr>
+            <th>department_name:</th>
+            <td><input type="text" name="dname" required></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center"><input type="submit" name="submit"></td>
+        </tr>
+    </table>
+</form>
+
+<H2>Department</H2>
+<table border="1">
+    <tr>
+        <th>sl no</th>
+        <th>department_name</th>
+        <th>Action</th>
+    </tr>
+
+    {% for i in data['view'] %}
+    <tr>
+        <td>{{loop.index }}</td>
+        <td>{{i['department_name'] }}</td>
+        <td>
+            <a href="?action=delete&id={{i['department_id']}}" class="btn btn-danger">delete</a>
+            <a href="?action=update&id={{i['department_id']}}" class="btn btn-success">update</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table> 
+{% endif %}
+</body>
+</html>
+
+{%include 'footer.html'%}
     

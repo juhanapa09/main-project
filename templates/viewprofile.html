@@ -1,58 +1,250 @@
+{%include 'village_header.html'%}
 
-
-
-{% extends 'village_officer.html' %}
-{% block content %}
-<div class="container-fluid pt-4 px-4">
-    <h3>Village Officers </h3>
-    <div class="row g-4">
-        <div class="col-sm-12 col-xl-10">
-
-            <div class="col-12">
-                <div class="bg-light rounded h-100 p-4">
-                    <table class="table table-striped">
-                <thead>
-                    <tr>
-                        <th scope="col">fname</th>
-                        <th scope="col">lname</th>
-                        <th scope="col">place</th>
-                        <th scope="col">phone</th>
-                        <th scope="col">email</th>
-
-
-
-                        
-                    </tr>
-                </thead>
-                <tbody>
-   
-       
-        
-        {% for i in data['view']%}
+<!-- 
+<html> 
+    <H2>Village officer</H2>
+    <table border="1">
         <tr>
-            <td>{{i['fname']}}</td>
-            <td>{{i['lname']}}</td>
-            <td>{{i['place']}}</td>
-            <td>{{i['phone']}}</td>
-            <td>{{i['email']}}</td>
-
-
+            
+            <th>Fname</th>
+            <th>lname</th>
+            <th>place</th>
+            <th>phone</th>
+            <th>email</th>
+            
             
         </tr>
-    </tr>
-    {%endfor%}
- </tbody>
-</table>
-</div>
-</div>
-</div></div></div>
-{%endblock%}
+
+        {% for i in data['view']%}
+        <tr>
+           
+            <td>{{i['fname'] }}</td>
+            <td>{{i['lname'] }}</td>
+            <td>{{i['place'] }}</td>
+            <td>{{i['phone'] }}</td>
+            <td>{{i['email'] }}</td>
+            
+           
+
+           
+
+        </tr>
+        {%endfor%}
+    </table> 
+
+</html> -->
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Village Officer Profile View</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px;
+            width: 400px; /* Increased width */
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <center>
+    <h2>Village Officer Profile View</h2>
+
+    {% for officer in data['view'] %}
+    <div class="card">
+        <table>
+            <tr>
+                <th>Fname</th>
+                <td>{{ officer['fname'] }}</td>
+            </tr>
+            <tr>
+                <th>Lname</th>
+                <td>{{ officer['lname'] }}</td>
+            </tr>
+            <tr>
+                <th>Place</th>
+                <td>{{ officer['place'] }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ officer['phone'] }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ officer['email'] }}</td>
+            </tr>
+        </table>
+    </div>
+    {% endfor %}
+
+</center>
+
+</body>
+
+</html>
+ -->
 
 
+ <!DOCTYPE html>
+ <html>
+ 
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Village Officer Profile View</title>
+     <style>
+         body {
+             font-family: Arial, sans-serif;
+             margin: 0;
+             padding: 20px;
+             background-color: #f2f2f2;
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: center;
+         }
+ 
+         .card {
+             background-color: #fff;
+             border-radius: 8px;
+             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+             margin: 10px;
+             width: 400px; /* Increased width */
+             padding: 20px;
+         }
+ 
+         .profile-img {
+             width: 100px; /* Adjust image size */
+             border-radius: 50%; /* Make the image circular */
+             margin: 0 auto 20px; /* Center the image and add spacing */
+             display: block;
+         }
+ 
+         h2 {
+             text-align: center;
+             color: #333;
+             margin-bottom: 20px;
+         }
+ 
+         table {
+             width: 100%;
+             border-collapse: collapse;
+         }
+ 
+         th,
+         td {
+             padding: 10px;
+             border-bottom: 1px solid #ddd;
+         }
+ 
+         th {
+             background-color: #f2f2f2;
+             font-weight: bold;
+         }
+ 
+         tr:nth-child(even) {
+             background-color: #f9f9f9;
+         }
+ 
+         tr:hover {
+             background-color: #f2f2f2;
+         }
+     </style>
+ </head>
+ 
+ <body>
+     <center>
+     <h2>Village Officer Profile View</h2>
+ 
+     {% for officer in data['view'] %}
+     <div class="card">
+         <img class="profile-img" src="/static/profile_view.png" height="300px" width="300px">
+         <table>
+             <tr>
+                 <th>First name</th>
+                 <td>{{ officer['fname'] }}</td>
+             </tr>
+             <tr>
+                 <th>Last name</th>
+                 <td>{{ officer['lname'] }}</td>
+             </tr>
+             <tr>
+                 <th>Place</th>
+                 <td>{{ officer['place'] }}</td>
+             </tr>
+             <tr>
+                 <th>Phone</th>
+                 <td>{{ officer['phone'] }}</td>
+             </tr>
+             <tr>
+                 <th>Email</th>
+                 <td>{{ officer['email'] }}</td>
+             </tr>
+         </table>
+     </div>
+     {% endfor %}
+ </center>
 
+ <br><br><br><br><br><br><br><br>
+ 
+ </body>
+ 
+ </html>
+ 
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="/static/js/swiper-bundle.min.js"></script>
+<script src="/static/js/owl.carousel.min.js"></script>
+<script src="/static/js/jquery.waypoints.min.js"></script>
+<script src="/static/js/jquery.counterup.min.js"></script>
+<script src="/static/js/youtube-popup.jquery.js"></script>
+<script src="/static/js/jquery.validate.min.js"></script>
+<script src="/static/js/theme.js"></script>
 
-
-
-
-   
-
+</body></html>

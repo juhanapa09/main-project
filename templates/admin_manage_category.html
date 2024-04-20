@@ -1,0 +1,206 @@
+
+{%include 'admin_header.html'%}
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+{%if data['up']%}
+ <form action="" method="post">
+
+    <table>
+        <tr>
+            <th>Category Name</th>
+            <td><input type="text" name="cat" value="{{data['up'][0]['title']}}"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" name="update"></td>
+        </tr>
+    </table>
+</form>
+{%else%}
+
+<form action="" method="post">
+
+    <table>
+        <tr>
+            <th>Category Name</th>
+            <td><input type="text" name="cat"></td>
+        </tr>
+        <tr>
+            <td align="center" colspan="2"><input type="submit" name="add"></td>
+        </tr>
+    </table>
+</form>
+
+<table border="2">
+    <tr>
+        <th>SL.NO</th>
+        <th>CATEGORY NAME</th>
+    </tr>
+{%for i in data['view']%}
+    <tr>
+        <td>{{loop.index}}</td>
+        <td>{{i['title']}}</td>
+        <td><a href="?action=update&id={{i['application_category_id']}}">Update</a>
+        <a href="?action=delete&id={{i['application_category_id']}}">Delete</a></td>
+
+    </tr>
+    {%endfor%}
+</table>
+{%endif%}
+
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        h1 {
+            text-align: center;
+            margin-top: 30px;
+            color: #333;
+        }
+
+        form {
+            width: 50%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        input[type="text"],
+        input[type="submit"] {
+            width: calc(100% - 6px);
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        td[colspan="2"] {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            margin-right: 5px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    
+{% if data['up'] %}
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Category Name</th>
+                <td><input type="text" name="cat" value="{{ data['up'][0]['title'] }}"></td>
+            </tr>
+            <tr>
+                <td colspan="2" align="center"><input type="submit" name="update" value="Update"></td>
+            </tr>
+        </table>
+    </form>
+{% else %}
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Category Name</th>
+                <td><input type="text" name="cat"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" name="add" value="Add"></td>
+            </tr>
+        </table>
+    </form>
+
+    <table border="2">
+        <tr>
+            <th>SL.NO</th>
+            <th>CATEGORY NAME</th>
+            <th>ACTION</th>
+        </tr>
+        {% for i in data['view'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i['title'] }}</td>
+            <td>
+                <a href="?action=update&id={{ i['application_category_id'] }}"class="btn btn-info">Update</a>
+                <a href="?action=delete&id={{ i['application_category_id'] }}"  class="btn btn-outline-danger" >Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endif %}
+
+</body>
+</html>
+
+
+{%include 'footer.html'%}

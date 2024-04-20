@@ -1,0 +1,127 @@
+
+
+{%include 'clerk_header.html'%}
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <table border="2">
+
+        <tr>
+            <th>SL.NO</th>
+            <th>TITLE</th>
+            <th>REASON</th>
+            <th>DATE</th>
+            <th>Status</th>
+        </tr>
+
+        {%for i in data['view']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['title']}}</td>
+            <td>{{i['reason']}}</td>
+            <td>{{i['date']}}</td>
+            <td>{{i['status']}}</td>
+
+            {%if i['status']=='Forward To Village Officer'%}
+            {%else%}
+            <td><a href="/clerk_forward_to_user?id={{i['application_id']}}">Forward </a></td>
+            {%endif%}
+          
+        </tr>
+        {%endfor%}
+    </table>
+
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <br><br><br><br><br>
+    <table>
+        <tr>
+            <th>SL.NO</th>
+            <th>TITLE</th>
+            <th>REASON</th>
+            <th>DATE</th>
+            <th>Status</th>
+        </tr>
+        {% for i in data['view'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i['title'] }}</td>
+            <td>{{ i['reason'] }}</td>
+            <td>{{ i['date'] }}</td>
+            <td>{{ i['status'] }}</td>
+            {% if i['status'] != 'Forward To Village Officer' %}
+            <td><a href="/clerk_forward_to_user?id={{ i['application_id'] }}" class="btn btn-outline-info">Forward</a></td>
+            {% else %}
+            <td></td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br><br><br><br>
+</body>
+</html>
+
+
+{%include 'footer.html'%}

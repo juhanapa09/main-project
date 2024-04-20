@@ -1,0 +1,165 @@
+{%include 'clerk_header.html'%}
+
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Requirement File Title</th>
+                <td><input type="text" name="file"></td>
+            </tr>
+            <tr>
+                <td><input type="submit" name="req"></td>
+            </tr>
+        </table>
+    </form>
+
+
+    <table border="2">
+        <tr>
+            <th>SL.NO</th>
+            <th>Requirement File Title</th>
+            <th>Status</th>
+        </tr>
+        {%for i in data['view']%}
+
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['requirement_file_title']}}</td>
+            <td>{{i['status']}}</td>
+            <td><a href="/clerk_view_certificate?id={{i['forward_id']}}&id1={{i['application_id']}}">View Requested Certificate</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+
+
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 2px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        form table {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="" method="post">
+        <table>
+            <tr>
+                <th>Requirement File Title</th>
+                <td><input type="text" name="file"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><input type="submit" name="req" value="Submit"></td>
+            </tr>
+        </table>
+    </form>
+
+    <table border="2">
+        <tr>
+            <th>SL.NO</th>
+            <th>Requirement File Title</th>
+            <th>Status</th>
+            <th>Action</th>
+        </tr>
+        {%for i in data['view']%}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['requirement_file_title']}}</td>
+            <td>{{i['status']}}</td>
+            <td><a href="/clerk_view_certificate?id={{i['forward_id']}}&id1={{i['application_id']}}" class="btn btn-outline-primary">View Requested Certificate</a></td>
+        </tr>
+        {%endfor%}
+    </table>
+
+</body>
+
+</html>
+
+
+{%include 'footer.html'%}

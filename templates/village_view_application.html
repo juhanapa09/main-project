@@ -1,0 +1,128 @@
+
+
+{%include 'village_header.html'%}
+
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <table border="2">
+        <tr>
+            <th>SL.NO</th>
+            <th>TITLE</th>
+            <th>REASON</th>
+            <th>DATE</th>
+            <th>STATUS</th>
+        </tr>
+
+        {%for i in data['view']%}
+
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>{{i['title']}}</td>
+            <td>{{i['reason']}}</td>
+            <td>{{i['date']}}</td>
+            <td>{{i['status']}}</td>
+            <td><a href="/village_add_certificate?id={{i['application_id']}}">ADD CERTIFICATE</a></td>
+        </tr>
+
+        {%endfor%}
+
+
+    </table>
+
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f2f2f2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <table border="2">
+        <tr>
+            <th>SL.NO</th>
+            <th>TITLE</th>
+            <th>REASON</th>
+            <th>DATE</th>
+            <th>STATUS</th>
+            <th>ACTION</th>
+        </tr>
+
+        {% for i in data['view'] %}
+        <tr>
+            <td>{{ loop.index }}</td>
+            <td>{{ i['title'] }}</td>
+            <td>{{ i['reason'] }}</td>
+            <td>{{ i['date'] }}</td>
+            <td>{{ i['status'] }}</td>
+            <td><a href="/village_add_certificate?id={{ i['application_id'] }}" class="btn  btn-outline-primary">ADD CERTIFICATE</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>
+
+
+{%include 'footer.html'%}
